@@ -1,2 +1,2 @@
-# btn-brukermelding-oppgave-retry
-Retry-consumer for meldinger som har feilet å bli opprettet oppgave for
+# btn-brukermelding-oppgave
+Kafka-consumer som leser nye meldinger fra stream og oppretter oppgave
