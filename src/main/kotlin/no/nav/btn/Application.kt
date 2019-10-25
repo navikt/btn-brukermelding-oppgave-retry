@@ -4,5 +4,15 @@
 package no.nav.btn
 
 fun main() {
-    startRetryConsumer()
+    val retryRiver = RetryRiver(
+            retryTopic = TOPIC_RETRY_OPPGAVE_OPPRETTELSE,
+            producerTopic = TOPIC_MELDING_MED_OPPGAVE,
+            deadLetterTopic = TOPIC_MULTIPLE_FAILING_SERVICE_CALLS
+    )
+
+    Runtime.getRuntime().addShutdownHook(Thread {
+        retryRiver.stop()
+    })
+
+    retryRiver.start()
 }
